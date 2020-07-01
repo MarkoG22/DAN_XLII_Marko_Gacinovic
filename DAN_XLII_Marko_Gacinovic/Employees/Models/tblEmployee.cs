@@ -20,7 +20,7 @@ namespace Employees.Models
         public string IdCardNumber { get; set; }
         public string JMBG { get; set; }
         public int GenderID { get; set; }
-        public int PhoneNumber { get; set; }
+        public string PhoneNumber { get; set; }
         public int SectorID { get; set; }
         public string LocationOfEmployee { get; set; }
         public int Manager { get; set; }

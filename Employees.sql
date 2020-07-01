@@ -33,10 +33,11 @@ DateOfBirth date not null,
 IdCardNumber char(9) check (LEN(IdCardNumber) = 9) not null unique,
 JMBG varchar(30) check(len(JMBG) = 13)  not null unique,
 GenderID int foreign key (GenderID) references tblGender(GenderID) not null,
-PhoneNumber int not null,
+PhoneNumber varchar(30) not null,
 SectorID int foreign key (SectorID) references tblSector(SectorID) not null,
 LocationOfEmployee varchar(30) not null,
 Manager int not null,
+constraint checkPhoneNumber check(PhoneNumber not like '%[^0-9]%'),
 constraint checkJMBG check(JMBG not like '%[^0-9]%'))
 
 insert into tblGender (Gender)
@@ -48,11 +49,10 @@ values('Female');
 insert into tblGender (Gender)
 values('Other');
 
-
 USE [Employees]
 GO
 
-/****** Object:  View [dbo].[vwEmployee]    Script Date: 30-Jun-20 21:58:17 ******/
+/****** Object:  View [dbo].[vwEmployee]    Script Date: 01-Jul-20 10:20:46 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -177,6 +177,7 @@ GO
 
 EXEC sys.sp_addextendedproperty @name=N'MS_DiagramPaneCount', @value=1 , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'VIEW',@level1name=N'vwEmployee'
 GO
+
 
 
 
